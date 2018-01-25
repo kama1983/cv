@@ -1,0 +1,61 @@
+<form enctype="multipart/form-data" class="form-group" action='/cv/post' method='post'>
+  <div class="starter-template">
+    <ul class="nav nav-tabs">
+      <li class="active"><a data-toggle="tab" href="#presonal">Presonal Information</a></li>
+      <li><a data-toggle="tab" href="#objective">Objective</a></li>
+      <li><a data-toggle="tab" href="#education">Education</a></li>
+      <li><a data-toggle="tab" href="#skills">Skills</a></li>
+      <li><a data-toggle="tab" href="#courses">Courses</a></li>
+      <li><a data-toggle="tab" href="#work">Work</a></li>
+      <li><a data-toggle="tab" href="#intersets">intersets</a></li>
+      <li><a data-toggle="tab" class='btn btn-danger' href="#finish">Finish Him</a></li>
+    </ul>
+    <div class="tab-content">
+      <div id="presonal" class="tab-pane fade in active">
+        <?php include_once view.'cv/presonal.php'; ?>
+      </div>
+      <div id="objective" class="tab-pane fade">
+        <?php include_once view.'cv/objective.php'; ?>
+      </div>
+      <div id="education" class="tab-pane fade">
+        <?php include_once view.'cv/education.php'; ?>
+      </div>
+      <div id='courses' class='tab-pane fade'>
+        <?php include_once view.'cv/courses.php'; ?>
+      </div>
+      <div id='work' class='tab-pane fade'>
+        <?php include_once view.'cv/work.php'; ?>
+      </div>
+      <div id='skills' class='tab-pane fade'>
+        <?php include_once view.'cv/skills.php'; ?>
+      </div>
+      <div id='intersets' class='tab-pane fade'>
+        <?php include_once view.'cv/intersets.php'; ?>
+      </div>
+      <div id='finish'  class='tab-pane fade'>
+        <br>
+        <div class='form-group'>
+          <div class='form-group'>
+             <input type="file" name="image" class='form-control'>
+          </div>
+          <div class='form-group'>
+            <label>Themes </label>
+            <select class='form-control' name='theme'>
+              <?php if (!empty($files)): ?>
+                <option>---select---</option>
+                <?php foreach ($files as $k => $v): ?>
+                            <option value='<?php echo $v; ?>'>
+                                <?php echo $k; ?>
+                            </option>  
+                <?php endforeach; ?>               
+              <?php endif ?>
+            </select>
+          </div>
+          <input type="submit" name="word" value='Word' class='btn btn-success'>
+           <input type="submit" target='_blank' name="print" value='View' class='btn btn-danger'>
+          <input type="submit" name="submit" value='Ok' class='btn btn-primary'>
+        </div>
+      </div>
+    </div>
+  </div>
+</form>

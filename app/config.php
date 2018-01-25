@@ -1,0 +1,10 @@
+<?php 
+error_reporting(E_ALL&&E_NOTICE);
+session_start();
+ini_set('display_errors','On');
+define('view',dirname(__DIR__).'\\app\\views\\');
+define('href','http://localhost/cv/');
+define('core',dirname(__DIR__).'\\Core\\');
+define('db','app\\db\\dat.db');
+define('control',__DIR__.'\\app\\controllers\\');
+define('assets',href.'public/assets');

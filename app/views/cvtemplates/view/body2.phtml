@@ -1,0 +1,109 @@
+<!-- Page Container -->
+<div class="w3-content w3-margin-top" style="max-width:1400px;">
+  <!-- The Grid -->
+  <div class="w3-row">
+
+    <div class='w3-container'>
+      <div class="w3-white w3-text-grey">
+        <div class="w3-display-container">
+         <img class='w3-circle' style='position:absolute;top:4px;<?php echo post('lang') == 'ar'? 'right:5px;':'left:5px;right:0px;'; ?>' src="<?php echo $_SESSION['image']; ?>" width='170' height='170'>
+          <div class="w3-text-black" style='position:relative;<?php echo post('lang') == 'ar'?'left:0px;right:200px;':'left:200px;right:0px'; ?>'>
+            <h2 class='w3-text-theme heading-h1'><?php echo post('name');?></h2>
+           <p class='heading-h1 w3-serif w3-text-theme'><i class="glyphicon glyphicon-home w3-margin-right w3-large"></i><?php echo presonal('b','lang')." : ".post('address');?></p>
+          <p class='heading-h1 w3-text-theme'><i class="glyphicon glyphicon-envelope w3-margin-right w3-large"></i><?php echo  presonal('em','lang')." : ".post('email');?></p>
+          <p class='heading-h1 w3-text-theme'><i class="glyphicon glyphicon-phone w3-margin-right"></i><?php echo presonal('c','lang')." : ".rep(post('mobile'));?></p>
+          </div>
+          <hr>
+          <h2 class='w3-padding w3-theme-d1 heading-form'><?php echo heading('a','lang'); ?></h2>
+          <p class='phar'><?php echo post('objective'); ?></p>
+          <hr>
+          <h2 class='w3-padding w3-theme-d1 heading-form'><?php echo heading('b','lang'); ?></h2>
+            <ul class='phar' style='list-style:square'>
+                <?php echo tags('<li><b>','</b></li>',[ 
+                     presonal('e','lang')." : ".rep(post('birthday')),
+                     presonal('d','lang')." : ".rep(post('religion')),
+                     presonal('g','lang')." : ".rep(post('gender')),
+                     presonal('h','lang')." : ".rep(post('status')),
+                     presonal('p','lang')." : ".rep(post('military')), 
+                ]); ?>
+          </ul>  
+          <?php if (count($_SESSION['post']['skilla']) > 0): ?>
+             <h2 class='w3-padding w3-theme-d1 heading-form'></i><?php echo heading('h','lang'); ?></h2>
+               <?php  
+                  echo maketag($_SESSION['post']['skilla'],[
+                      'skilla' => ['<p class="w3-text-theme">' => '</p>'],
+                      'skillb' => ['<div class="w3-light-grey w3-round-xlarge w3-small">' => '</div></div>']
+                 ],['rep','progress']); 
+               ?>
+             <?php endif ?>
+       </div>
+       </div>
+    </div>
+
+    <div class='w3-container'>
+      <!-- Right Column -->
+     <?php if (count($_SESSION['post']['worka']) > 0): ?>
+     <div class="w3-container w3-white w3-margin-bottom">
+        <h2 class='w3-padding w3-theme-d1 heading-form'><i class="fa fa-certificate fa-fw w3-margin-right w3-xxlarge w3-text-teal"></i> <?php echo heading('d','lang'); ?></h2> 
+              <div class="w3-container">
+                <table class='w3-row'>
+                  <?php  
+                    echo maketag($_SESSION['post']['worka'],[
+                        'worka' => ['<tr><td width="40%"><h4 class="w3-text-theme">' => '</h4></td>'],
+                        'workb' => ['<td><b>' => "</b> - "],
+                        'workc' => ['<b>' => "</b><td></tr>"],
+                        'workf' => ['<td><b>' => '<b></td></tr>'],
+                        'workd' => ['<td><b>' => '<b></td></tr>']
+                     ],['datemonth']); ?>
+                </table>
+                <hr>
+             </div>
+        </div>
+    <?php endif; ?>
+
+     <?php if (count($_SESSION['post']['edua']) > 0): ?>
+        <div class="w3-container w3-white">
+          <h2 class='w3-padding w3-theme-d1 heading-form'><i class="fa fa-certificate fa-fw w3-margin-right w3-xxlarge w3-text-teal"></i><?php echo heading('c','lang'); ?></h2>
+          <div class="w3-container">
+          <table class='w3-row'>
+            <?php  
+              echo maketag($_SESSION['post']['edua'],[
+                  'edua' => ['<tr><td width="40%"><h4 class="w3-text-theme">' => '</h4></td>'],
+                  'edub' => ['<td><b>' => "</b> - "],
+                  'educ' => ['<b>' => "</b></td></tr>"],
+                  'edud' => post('lang') == 'ar' ? ['<tr><td><b>الدرجة من : ' => "</b></td></tr>"]: ['<tr><td><b>dgree : ' => "</b></td></tr>"],
+                  'eduf' => ['<tr><td><b>' => '<b></td></tr>']
+                 ],['datemonth']); ?>
+          </table>
+          </div>
+        </div>
+     <?php endif; ?>
+
+   <?php if (count($_SESSION['post']['coursea']) > 0): ?>
+  <div class="w3-container w3-white">
+          <h2 class='w3-padding w3-theme-d1 heading-form'><i class="fa fa-certificate fa-fw w3-margin-right w3-xxlarge w3-text-teal"></i><?php echo heading('g','lang'); ?></h2>
+          <div class="w3-container">
+          <table class='w3-row'>
+            <?php  
+          echo maketag($_SESSION['post']['coursea'],[
+              'coursea' => ['<tr><td width="40%"><h4 class="w3-text-theme">' => '</h4></td>'],
+              'courseb' => ['<td><b>' => "</b> - "],
+              'coursec' => ['<b>' => "</b></td></tr>"],
+              'coursed' => ['<tr><td><b>' => '<b></td></tr>'],
+              'coursef' => ['<tr><td><b>' => '<b></td></tr>']
+             ],['datemonth']); ?>
+          </table>
+          </div>
+        </div>
+   <?php endif; ?>
+    <?php if (post('Intersets')): ?>
+      <div class="w3-container w3-white">
+      <h2 class='w3-padding w3-theme-d1 heading-form'><i class="fa fa-certificate fa-fw w3-margin-right w3-xxlarge w3-text-teal"></i><?php echo heading('p','lang'); ?></h2>
+        <p class='phar'><?php echo post('Intersets'); ?></p>
+      </div>
+    <?php endif ?>
+    </div>
+  <!-- End Grid -->
+  </div>
+  <!-- End Page Container -->
+</div>

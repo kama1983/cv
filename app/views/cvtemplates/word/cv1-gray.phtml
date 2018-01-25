@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<link rel="stylesheet" type="text/css" href="<?php echo assets; ?>/css/w3.css">
+	<style type="text/css">
+.w3-theme-l5 {color:#000 !important; background-color:#f9f9f9 !important}
+.w3-theme-l4 {color:#000 !important; background-color:#ececec !important}
+.w3-theme-l3 {color:#000 !important; background-color:#d8d8d8 !important}
+.w3-theme-l2 {color:#000 !important; background-color:#c5c5c5 !important}
+.w3-theme-l1 {color:#000 !important; background-color:#b1b1b1 !important}
+.w3-theme-d1 {color:#fff !important; background-color:#8e8e8e !important}
+.w3-theme-d2 {color:#fff !important; background-color:#7e7e7e !important}
+.w3-theme-d3 {color:#fff !important; background-color:#6f6f6f !important}
+.w3-theme-d4 {color:#fff !important; background-color:#5f5f5f !important}
+.w3-theme-d5 {color:#fff !important; background-color:#4f4f4f !important}
+
+.w3-theme-light {color:#000 !important; background-color:#f9f9f9 !important}
+.w3-theme-dark {color:#fff !important; background-color:#4f4f4f !important}
+.w3-theme-action {color:#fff !important; background-color:#4f4f4f !important}
+
+.w3-theme {color:#fff !important; background-color:#9e9e9e !important}
+.w3-text-theme {color:#9e9e9e !important}
+.w3-theme-border {border-color:#9e9e9e !important}
+	  body{
+	  	direction:<?php echo post('lang') == 'ar' ? 'rtl': 'ltr'; ?>;
+	  }
+    .heading-h1{
+      font-family:Andalus;
+      padding:5px;
+      color:white;
+      text-align:center;
+    }
+    .heading-h2{
+     font-weight:bold;
+     font-family:Andalus;
+    }
+    .heading-form{
+      font-weight:bold;
+      font-family:Andalus;
+    }
+    .phar{
+      font-weight:bold;
+      width:70%;
+      text-align:justify;
+      font-family:arial;
+      font-size:18px;
+    }
+    h1,h3,h4{
+      overflow:hidden;
+      margin:0px;
+    }
+	</style>
+</head>
+<body>
+	<header>
+		 <h1 class='w3-theme-l3 heading-h1'><?php echo post('name');?></h1>
+		 <h3 class='w3-theme-l4 w3-center heading-h2'><?php echo presonal('b','lang')." : ".post('address');?></h3>
+		 <h4 style='font-weight:bolder;font-style:italic;' class='w3-theme-l5 w3-center'><?php echo presonal('c','lang')." : ".post('mobile');?> - <?php echo  presonal('em','lang')." : ".post('email');?></h4>
+	</header>
+    <h2 class='w3-badge w3-padding w3-theme-d1 heading-form'><?php echo heading('a','lang'); ?></h2>
+    <p class='phar'><?php echo post('objective'); ?></p>
+    <h2 class='w3-badge w3-padding w3-theme-d1 heading-form'><?php echo heading('b','lang'); ?></h2>   
+    <ul class='phar' style='list-style:square'>
+    	<?php echo tags('<li><b>','</b></li>',[ 
+           presonal('e','lang')." : ".rep(post('birthday')),
+           presonal('d','lang')." : ".rep(post('religion')),
+           presonal('g','lang')." : ".rep(post('gender')),
+           presonal('h','lang')." : ".rep(post('status')),
+           presonal('p','lang')." : ".rep(post('military')), 
+    	]); ?>
+    </ul>   
+    <h2 class='w3-badge w3-padding w3-theme-d1 heading-form'><?php echo heading('c','lang'); ?></h2>  
+    <?php for($i=0; $i < count($_POST['edua']); $i++) { 
+         echo "<h3 class='phar'>".$_POST['edua'][$i].datemonth($_POST['edub'][$i])." To  ".datemonth($_POST['educ'][$i]). "</h3>"; 
+         echo "<p class='phar'>".$_POST['edud'][$i]." ".$_POST['eduf'][$i]."</p>";
+    } ?>
+    <h2 class='w3-badge w3-padding w3-theme-d1 heading-form'><?php echo heading('d','lang'); ?></h2>  
+    <?php for($i=0; $i < count($_POST['worka']); $i++) { 
+         echo "<h3 class='phar'>".$_POST['worka'][$i]."</h3>";
+         echo "<h4 class='phar'>".datemonth($_POST['workb'][$i])."  To ".datemonth($_POST['workc'][$i])."</h4>"; 
+         echo "<p class='phar'>".$_POST['workd'][$i]."</p>";
+    } ?>
+    <h2 class='w3-badge w3-padding w3-theme-d1 heading-form'><?php echo heading('h','lang'); ?></h2>  
+    <?php for($i=0; $i < count($_POST['skilla']); $i++) { 
+         echo "<h3 class='phar'>".$_POST['skilla'][$i]." ".$_POST['skillb'][$i]."</h4>"; 
+    } ?>
+    <h2 class='w3-badge w3-padding w3-theme-d1 heading-form'><?php echo heading('g','lang'); ?></h2>  
+    <?php echo posts('<div class="form-group">','</div>','<b>','</b>',['coursea','courseb','coursec','coursed','coursef']); ?>
+    <h2 class='w3-badge w3-padding w3-theme-d1 heading-form'><?php echo heading('p','lang'); ?></h2>
+    <p class='phar'><?php echo post('Intersets'); ?></p>
+</body>
+</html>
